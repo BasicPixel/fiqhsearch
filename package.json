@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.5",
+    "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "firebase": "^9.6.7",
@@ -17,7 +18,10 @@
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-firebase-hooks": "^5.0.3"
+    "react-firebase-hooks": "^5.0.3",
+    "react-icons": "^4.3.1",
+    "stylis": "^4.0.13",
+    "stylis-plugin-rtl": "^2.1.1"
   },
   "devDependencies": {
     "eslint": "8.10.0",
