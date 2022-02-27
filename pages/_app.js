@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -24,7 +25,9 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="manifest" href="/site.webmanifest"></link>
       </Head>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   );
 }
