@@ -27,7 +27,7 @@ const MenuLink = ({ href, children, target }) => (
     href={href}
     target={target}
   >
-    <MenuItem textTransform="capitalize">{children}</MenuItem>
+    <MenuItem>{children}</MenuItem>
   </Link>
 );
 
