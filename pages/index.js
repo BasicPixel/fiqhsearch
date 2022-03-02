@@ -1,4 +1,5 @@
 import { Button, Heading, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import Search from "../components/Search";
 
 export default function Home() {
@@ -11,9 +12,13 @@ export default function Home() {
         py={"20"}
       >
         <Heading>الباحث الفقهي</Heading>
-        <Text>خدمة تسهل الوصول إلى المسائل الفقهية حسب المذهب</Text>
+        <Text fontSize={"lg"}>
+          خدمة تسهل الوصول إلى المسائل الفقهية حسب المذهب
+        </Text>
         <Search />
-        <Button colorScheme="blue">تصفح المسائل</Button>
+        <Link href={"/browse"} passHref>
+          <Button colorScheme="blue">تصفح المسائل</Button>
+        </Link>
       </Stack>
     </>
   );
