@@ -16,7 +16,8 @@ import {
   MenuGroup,
 } from "@chakra-ui/react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { FiGithub, FiMoon, FiSun, FiMenu } from "react-icons/fi";
+import { FiGithub, FiMoon, FiSun, FiMenu, FiTwitter } from "react-icons/fi";
+import { FaTelegramPlane } from "react-icons/fa";
 
 const MenuLink = ({ href, children, target }) => (
   <Link
@@ -68,6 +69,13 @@ export default function Navbar() {
                   target={"_blank"}
                 >
                   <FiGithub /> <Text ps={2}>المشروع على GitHub</Text>
+                </MenuLink>
+                <MenuLink href={"https://t.me/fiqhsearch"} target={"_blank"}>
+                  <FaTelegramPlane />{" "}
+                  <Text ps={2}>صفحة المشروع على تلجرام</Text>
+                </MenuLink>
+                <MenuLink href={"https://t.me/fiqhsearch"} target={"_blank"}>
+                  <FiTwitter /> <Text ps={2}>حساب المشروع على تويتر</Text>
                 </MenuLink>
               </MenuGroup>
             </MenuList>
