@@ -1,8 +1,18 @@
-import { Button, Divider, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Divider,
+  Flex,
+  Grid,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { getAuth } from "firebase/auth";
+import Link from "next/link";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { FiLogOut } from "react-icons/fi";
+import { FiEdit, FiLogOut, FiPlus } from "react-icons/fi";
 import app from "../src/client";
 
 const AdminInterface = () => {
@@ -26,6 +36,16 @@ const AdminInterface = () => {
         </Button>
       </Flex>
       <Divider />
+      <SimpleGrid columns={2} columnGap={4}>
+        <Link href={"/admin/add"} passHref>
+          <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
+            إضافة مسألة جديدة
+          </Button>
+        </Link>
+        <Button leftIcon={<FiEdit />} colorScheme={"green"}>
+          تعديل مسألة
+        </Button>
+      </SimpleGrid>
     </Stack>
   );
 };
