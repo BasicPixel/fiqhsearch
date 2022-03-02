@@ -3,7 +3,13 @@ import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import { RtlProvider } from "../components/rtl-provider";
 import Navbar from "../components/Navbar";
 
+import "@fontsource/tajawal";
+
 const theme = extendTheme({
+  fonts: {
+    heading: "Tajawal, sans-serif",
+    body: "Tajawal, sans-serif",
+  },
   config: { useSystemColorMode: true },
 });
 
@@ -34,7 +40,7 @@ function MyApp({ Component, pageProps }) {
           </Head>
 
           <Navbar />
-          <Container>
+          <Container pt={4}>
             <Component {...pageProps} />
           </Container>
         </RtlProvider>

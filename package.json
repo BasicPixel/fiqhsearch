@@ -13,6 +13,7 @@
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/tajawal": "^4.5.2",
     "firebase": "^9.6.7",
     "framer-motion": "^6",
     "next": "12.1.0",

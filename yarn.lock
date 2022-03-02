@@ -1109,6 +1109,11 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.1.tgz#0c74724ba6e9ea6ad25a391eab60a79eaba4c556"
   integrity sha512-9FqhNjKQWpQ3fGnSOCovHOm+yhhiorKEqYLAfd525jWavunDJcx8rOW6i6ozAh+FbwcYMkL7b+3j4UR/30MpoQ==
 
+"@fontsource/tajawal@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/tajawal/-/tajawal-4.5.2.tgz#36bb36c8fac1d2afc57be0dc8fe2bf398c38ee03"
+  integrity sha512-eRTkGJ/0OIjU9hlsfWPkmOxcu8+gnYe1Q8ZthBr1vKPzm21NOSWShctL+bCKZ0JxD55X1Nakhu9F9kXaMm5lHQ==
+
 "@grpc/grpc-js@^1.3.2":
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.5.7.tgz#c83a5dc1d0cf7b8aa82371cfa7125955d1f25a96"
