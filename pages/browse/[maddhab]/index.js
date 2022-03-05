@@ -1,26 +1,46 @@
 import React from "react";
 
-import { Container, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Link,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import Card from "../../../components/Card";
 
 import app from "../../../src/client";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useRouter } from "next/router";
+
+import Custom404 from "../../404";
 
 const Browse = ({ data }) => {
-  return (
-    <Container maxW={"full"} py={"6"}>
-      <Stack spacing={4}>
-        <Heading>تصفح المسائل</Heading>
-        <SimpleGrid py={4} columns={2} gap={4}>
-          {data.map((el) => (
-            <Card key={el.id}>
-              <Text fontSize={"xl"}>{el.id}</Text>
-            </Card>
-          ))}
-        </SimpleGrid>
-      </Stack>
-    </Container>
-  );
+  const router = useRouter();
+
+  if (
+    ["hanbali", "shafi'i", "hanafi", "maliki"].includes(router.query.maddhab)
+  ) {
+    return (
+      <Container maxW={"full"} py={"6"}>
+        <Stack spacing={4}>
+          <Heading>تصفح المسائل</Heading>
+          <SimpleGrid py={4} columns={2} gap={4}>
+            {data.map((el) => (
+              <Link key={el.id} href={`${router.query.maddhab}/${el.id}`}>
+                <Card>
+                  <Text fontSize={"xl"}>{el.id}</Text>
+                </Card>
+              </Link>
+            ))}
+          </SimpleGrid>
+        </Stack>
+      </Container>
+    );
+  } else {
+    return <Custom404 />;
+  }
 };
 
 export default Browse;

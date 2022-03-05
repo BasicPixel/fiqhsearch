@@ -7,7 +7,7 @@ import IssueForm from "../../components/IssueForm";
 import app from "../../src/client";
 
 const AddIssue = () => {
-  const [user, loading, error] = useAuthState(getAuth(app));
+  const [user, loading] = useAuthState(getAuth(app));
   const router = useRouter();
 
   if (!loading) {
