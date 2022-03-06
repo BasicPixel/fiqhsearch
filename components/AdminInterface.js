@@ -10,15 +10,20 @@ import {
 } from "@chakra-ui/react";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FiEdit, FiLogOut, FiPlus } from "react-icons/fi";
+import useLocalStorage from "../hooks/useLocalStorage";
 import app from "../src/client";
 
 const AdminInterface = () => {
   const auth = getAuth(app);
 
   const [user, loading] = useAuthState(auth);
+  const [madhhab] = useLocalStorage("madhhab", "hanbali");
+
+  const router = useRouter();
 
   return (
     <Stack spacing={4}>
@@ -29,7 +34,10 @@ const AdminInterface = () => {
         </Text>
         <Button
           leftIcon={<FiLogOut />}
-          onClick={() => auth.signOut()}
+          onClick={() => {
+            router.back();
+            auth.signOut();
+          }}
           colorScheme="red"
         >
           تسجيل الخروج
@@ -37,7 +45,7 @@ const AdminInterface = () => {
       </Flex>
       <Divider />
       <SimpleGrid columns={2} columnGap={4}>
-        <Link href={"/admin/add"} passHref>
+        <Link href={`/admin/add/${madhhab}`} passHref>
           <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
             إضافة مسألة جديدة
           </Button>
