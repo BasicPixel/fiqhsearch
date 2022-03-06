@@ -10,7 +10,7 @@ const theme = extendTheme({
     heading: "Tajawal, sans-serif",
     body: "Tajawal, sans-serif",
   },
-  config: { useSystemColorMode: true },
+  // config: { useSystemColorMode: true },
 });
 
 function MyApp({ Component, pageProps }) {
