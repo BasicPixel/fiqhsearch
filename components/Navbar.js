@@ -16,25 +16,26 @@ import {
   MenuGroup,
 } from "@chakra-ui/react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { FiGithub, FiMoon, FiSun, FiMenu, FiTwitter } from "react-icons/fi";
+import {
+  FiGithub,
+  FiMoon,
+  FiSun,
+  FiMenu,
+  FiTwitter,
+  FiSettings,
+} from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 
-const MenuLink = ({ href, children, target }) => (
-  <Link
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-    }}
-    href={href}
-    target={target}
-  >
-    <MenuItem>{children}</MenuItem>
-  </Link>
-);
+import MenuLink from "./MenuLink";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+import app from "../src/client";
+import { MADHHABS } from "../src/constants";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [madhhab, setMadhhab] = useLocalStorage("maddhab", "");
+  const [madhhab, setMadhhab] = useLocalStorage("madhhab", null);
+  const [user] = useAuthState(getAuth(app));
 
   return (
     <>
@@ -49,23 +50,29 @@ export default function Navbar() {
           <Menu>
             <MenuButton as={IconButton} icon={<FiMenu />} />
             <MenuList>
+              <MenuItem>{madhhab}</MenuItem>
+
+              <MenuDivider />
+
               <MenuOptionGroup
                 type="radio"
                 title="المذهب الفقهي"
-                value={madhhab}
+                // defaultValue={madhhab}
+                value={madhhab ? madhhab : ""}
                 onChange={(option) => {
                   setMadhhab(option);
                 }}
               >
-                <MenuItemOption value="hanbali">الحنبلي</MenuItemOption>
-                <MenuItemOption value="shafi'i">الشافعي</MenuItemOption>
-                <MenuItemOption value="maliki">المالكي</MenuItemOption>
-                <MenuItemOption value="hanafi">الحنفي</MenuItemOption>
+                {Object.entries(MADHHABS).map((madhhab) => (
+                  <MenuItemOption value={madhhab[0]} key={madhhab[0]}>
+                    {madhhab[1]}
+                  </MenuItemOption>
+                ))}
               </MenuOptionGroup>
               <MenuDivider />
               <MenuGroup title="روابط خارجية">
                 <MenuLink
-                  href={"https://github.com/BasicPixel/fiqhsearch"}
+                  href={"https://github.com/fiqhsearch"}
                   target={"_blank"}
                 >
                   <FiGithub /> <Text ps={2}>المشروع على GitHub</Text>
@@ -78,6 +85,14 @@ export default function Navbar() {
                   <FiTwitter /> <Text ps={2}>حساب المشروع على تويتر</Text>
                 </MenuLink>
               </MenuGroup>
+              {user && (
+                <>
+                  <MenuDivider />
+                  <MenuLink href={"/admin"} onClick={toggleColorMode}>
+                    <FiSettings /> <Text ps={2}>واجهة المسؤولين</Text>
+                  </MenuLink>
+                </>
+              )}
             </MenuList>
           </Menu>
           <Link
