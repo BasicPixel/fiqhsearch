@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const BrowseHome = () => {
-  const [maddhab] = useLocalStorage("maddhab", "hanbali");
+  const [madhhab] = useLocalStorage("madhhab", "hanbali");
   const router = useRouter();
 
-  router.push(`browse/${maddhab}`);
+  router.push(`browse/${madhhab}`);
   return <Heading textAlign={"center"}>جارٍ التحميل...</Heading>;
 };
 
