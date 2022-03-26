@@ -15,27 +15,25 @@ import {
 } from "@chakra-ui/react";
 
 import { MADHHABS } from "../../../src/constants";
-import { useData } from "../../../hooks/useData";
 
 const Add = () => {
   const router = useRouter();
   const madhhab = router.query.madhhab;
-  const data = useData();
 
   // I spent too much time on the code from here
-  const structuredData = {};
+  // const structuredData = {};
 
-  data.forEach((obj) => {
-    structuredData[obj.id] = { ...obj };
-  });
+  // data.forEach((obj) => {
+  //   structuredData[obj.id] = { ...obj };
+  // });
 
-  const allTopics = [];
+  // const allTopics = [];
 
-  for (let i in structuredData) {
-    if (structuredData[i].issues) {
-      allTopics.push(...Object.keys(structuredData[i].issues));
-    }
-  }
+  // for (let i in structuredData) {
+  //   if (structuredData[i].issues) {
+  //     allTopics.push(...Object.keys(structuredData[i].issues));
+  //   }
+  // }
   // To here
 
   const handleSubmit = (e) => {

@@ -1,25 +1,22 @@
-import { Heading } from "@chakra-ui/react";
-import { getAuth } from "firebase/auth";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import AdminInterface from "../../components/AdminInterface";
-import Login from "../../components/Login";
-import app from "../../src/client";
+import supabase from "../../src/client";
+import { useRouter } from "next/router";
+import { Heading } from "@chakra-ui/react";
 
 const Admin = () => {
-  const [user, loading] = useAuthState(getAuth(app));
+  const user = supabase.auth.user();
+  const router = useRouter();
 
-  if (!loading) {
-    return user ? <AdminInterface /> : <Login />;
-  } else {
-    return (
-      <>
-        <Heading textAlign={"center"} dir={"ltr"}>
-          Loading...
-        </Heading>
-      </>
-    );
-  }
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/admin/login");
+    }
+
+    return () => console.log();
+  }, [router, user]);
+
+  return <AdminInterface />;
 };
 
 export default Admin;

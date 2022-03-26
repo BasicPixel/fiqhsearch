@@ -4,3 +4,5 @@ export const MADHHABS = {
   hanafi: "الحنفي",
   maliki: "المالكي",
 };
+
+export const fetchOptions = {};

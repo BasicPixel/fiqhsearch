@@ -5,10 +5,6 @@ import "@fontsource/tajawal";
 
 import { RtlProvider } from "../components/rtl-provider";
 import Navbar from "../components/Navbar";
-import { DataContext } from "../hooks/useData";
-import { useState, useEffect, useContext } from "react";
-
-import useLocalStorage from "../hooks/useLocalStorage";
 
 const theme = extendTheme({
   fonts: {
@@ -18,23 +14,6 @@ const theme = extendTheme({
 });
 
 function MyApp({ Component, pageProps }) {
-  const [madhhab] = useLocalStorage("madhhab", "hanbali");
-  const [data, setData] = useState();
-  const contextData = useContext(DataContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`/api/issues/${madhhab}`);
-      const apiData = await res.json();
-
-      setData(apiData);
-    };
-
-    if (!contextData) {
-      fetchData();
-    }
-  }, []);
-
   return (
     <ChakraProvider theme={theme}>
       <RtlProvider>
@@ -59,13 +38,9 @@ function MyApp({ Component, pageProps }) {
           <link rel="manifest" href="/site.webmanifest"></link>
         </Head>
         <Navbar />
-        {data && (
-          <DataContext.Provider value={data}>
-            <Container pt={4}>
-              <Component {...pageProps} />
-            </Container>
-          </DataContext.Provider>
-        )}
+        <Container pt={4}>
+          <Component {...pageProps} />
+        </Container>
       </RtlProvider>
     </ChakraProvider>
   );

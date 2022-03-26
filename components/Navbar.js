@@ -27,15 +27,16 @@ import {
 import { FaTelegramPlane } from "react-icons/fa";
 
 import MenuLink from "./MenuLink";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import app from "../src/client";
+import { Auth } from "@supabase/ui";
+import moduleName from "@supabase/supabase-js";
 import { MADHHABS } from "../src/constants";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [madhhab, setMadhhab] = useLocalStorage("madhhab", null);
-  const [user] = useAuthState(getAuth(app));
+  // const [user] = useAuthState(getAuth(app));
+  const { user } = Auth.useUser();
 
   return (
     <>
@@ -50,7 +51,7 @@ export default function Navbar() {
           <Menu>
             <MenuButton as={IconButton} icon={<FiMenu />} />
             <MenuList>
-              <MenuItem>{madhhab}</MenuItem>
+              <MenuItem>المذهب الحالي: {MADHHABS[madhhab]}</MenuItem>
 
               <MenuDivider />
 
@@ -85,13 +86,15 @@ export default function Navbar() {
                   <FiTwitter /> <Text ps={2}>حساب المشروع على تويتر</Text>
                 </MenuLink>
               </MenuGroup>
-              {user && (
+              {user ? (
                 <>
                   <MenuDivider />
                   <MenuLink href={"/admin"} onClick={toggleColorMode}>
                     <FiSettings /> <Text ps={2}>واجهة المسؤولين</Text>
                   </MenuLink>
                 </>
+              ) : (
+                <>Not logged in</>
               )}
             </MenuList>
           </Menu>
