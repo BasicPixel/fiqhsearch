@@ -21,7 +21,6 @@ const AdminInterface = () => {
   const auth = getAuth(app);
 
   const [user, loading] = useAuthState(auth);
-  const [madhhab] = useLocalStorage("madhhab", "hanbali");
 
   const router = useRouter();
 
@@ -45,7 +44,7 @@ const AdminInterface = () => {
       </Flex>
       <Divider />
       <SimpleGrid columns={2} columnGap={4}>
-        <Link href={`/admin/add/${madhhab}`} passHref>
+        <Link href={`/admin/add`} passHref>
           <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
             إضافة مسألة جديدة
           </Button>

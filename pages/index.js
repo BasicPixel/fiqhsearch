@@ -1,8 +1,13 @@
 import { Button, Heading, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Search from "../components/Search";
+import { useData } from "../hooks/useData";
 
 export default function Home() {
+  const data = useData();
+
+  console.log(data);
+
   return (
     <>
       <Stack
