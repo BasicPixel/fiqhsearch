@@ -55,6 +55,6 @@ export async function getServerSideProps(context) {
   console.log(sectionName);
 
   return {
-    props: { data, name: sectionName.name }, // will be passed to the page component as props
+    props: { data, name: sectionName.name },
   };
 }

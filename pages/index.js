@@ -1,8 +1,11 @@
 import { Button, Heading, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Search from "../components/Search";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function Home() {
+  const [madhhab] = useLocalStorage("madhhab", "hanbali");
+
   return (
     <>
       <Stack
@@ -16,10 +19,16 @@ export default function Home() {
           خدمة تسهل الوصول إلى المسائل الفقهية حسب المذهب
         </Text>
         <Search />
-        <Link href={"/browse"} passHref>
+        <Link href={`/browse/${madhhab}`} passHref>
           <Button colorScheme="blue">تصفح المسائل</Button>
         </Link>
       </Stack>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
 }
