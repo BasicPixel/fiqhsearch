@@ -2,52 +2,75 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Button,
+  CloseButton,
   Divider,
   FormControl,
   FormLabel,
   Heading,
   Input,
   Select,
+  Spinner,
   Stack,
   Text,
   Textarea,
 } from "@chakra-ui/react";
+import supabase from "../../../src/client";
 
 import { MADHHABS } from "../../../src/constants";
 
-const Add = () => {
+const Add = ({ topics }) => {
   const router = useRouter();
   const madhhab = router.query.madhhab;
 
-  // I spent too much time on the code from here
-  // const structuredData = {};
+  const submitIssue = async () => {
+    setSubmitData(null);
+    setError(null);
+    setLoading(true);
 
-  // data.forEach((obj) => {
-  //   structuredData[obj.id] = { ...obj };
-  // });
+    const { data, error } = await supabase
+      .from("issues")
+      .insert([{ madhhab, topic, question, answer, proof }]);
 
-  // const allTopics = [];
+    setLoading(false);
 
-  // for (let i in structuredData) {
-  //   if (structuredData[i].issues) {
-  //     allTopics.push(...Object.keys(structuredData[i].issues));
-  //   }
-  // }
-  // To here
+    if (error) {
+      setError(error.message);
+    } else {
+      setSubmitData(data);
+      resetForm();
+    }
+  };
+
+  const resetForm = () => {
+    setAnswer("");
+    setProof("");
+    setQuestion("");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log(topic);
     console.log(question);
     console.log(answer);
     console.log(proof);
+
+    submitIssue();
   };
 
-  const [topic, setTopic] = useState(allTopics[0]);
+  const [topic, setTopic] = useState(topics[0].id);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [proof, setProof] = useState("");
+
+  const [submitData, setSubmitData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   return (
     <Stack spacing={4} pb={12}>
@@ -63,16 +86,16 @@ const Add = () => {
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
           <FormControl isRequired>
-            <FormLabel htmlFor="topic">الباب / الكتاب الفقهي</FormLabel>
+            <FormLabel htmlFor="topic">الباب / الموضوع الفقهي</FormLabel>
             <Select
               id="topic"
               dir="ltr"
               value={topic}
-              onChange={(e) => setTopic(e.target.value)}
+              onChange={(e) => setTopic(parseInt(e.target.value))}
             >
-              {allTopics.map((el) => (
-                <option value={el} key={el}>
-                  {el}
+              {topics.map((el) => (
+                <option value={el.id} key={el.id}>
+                  {el.name}
                 </option>
               ))}
             </Select>
@@ -117,8 +140,41 @@ const Add = () => {
           </Button>
         </Stack>
       </form>
+
+      {loading && (
+        <Alert status="warning">
+          <Spinner />
+          <AlertTitle mr={2}>تتم إضافة المسألة...</AlertTitle>
+        </Alert>
+      )}
+
+      {error && (
+        <Alert status="error">
+          <AlertIcon />
+          <AlertTitle mr={2}>حدثت مشكلة خلال إضافة المسألة</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {!error && submitData && (
+        <Alert status="success">
+          <AlertIcon />
+          <AlertTitle mr={2}>تمت إضافة المسألة الفقهية بنجاح</AlertTitle>
+        </Alert>
+      )}
     </Stack>
   );
 };
 
 export default Add;
+
+export async function getServerSideProps(context) {
+  const { data } = await supabase
+    .from("topics")
+    .select("id,name")
+    .eq("madhhab", context.query.madhhab);
+
+  return {
+    props: { topics: data },
+  };
+}
