@@ -1,15 +1,25 @@
+import { Auth } from "@supabase/ui";
 import { useRouter } from "next/router";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useEffect } from "react";
 
 const AddIssue = () => {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");
   const router = useRouter();
 
-  if (user) {
-    router.push(`/admin/add/${madhhab}`);
-  } else {
-    router.back();
-  }
+  const user = Auth.useUser();
+
+  useEffect(() => {
+    if (user) {
+      router.push(`/admin/add/${madhhab}`);
+    } else {
+      router.back();
+    }
+    return () => {
+      console.log();
+    };
+  }, []);
+
   return null;
 };
 
