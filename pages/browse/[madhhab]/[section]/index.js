@@ -52,8 +52,6 @@ export async function getServerSideProps(context) {
     .eq("id", context.query.section)
     .single();
 
-  console.log(sectionName);
-
   return {
     props: { data, name: sectionName.name },
   };
