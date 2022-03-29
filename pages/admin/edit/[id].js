@@ -34,7 +34,7 @@ const IssueEditor = ({ issue }) => {
 
     const { data, error } = await supabase
       .from("issues")
-      .update({ question, answer, proof })
+      .update({ ...issue, question, answer, proof })
       .eq("id", issue.id);
 
     setLoading(false);
