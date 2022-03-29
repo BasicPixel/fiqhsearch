@@ -33,6 +33,7 @@ const SearchBar = () => {
           variant={"filled"}
           value={query}
           onChange={handleChange}
+          isRequired
         />
       </InputGroup>
     </FormControl>
