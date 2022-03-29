@@ -5,7 +5,7 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const SearchBar = () => {
   const innerRef = useRef();
@@ -13,12 +13,6 @@ const SearchBar = () => {
   useEffect(() => {
     innerRef.current && innerRef.current.focus();
   }, []);
-
-  const [query, setQuery] = useState("");
-
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
 
   return (
     <FormControl>
@@ -31,8 +25,6 @@ const SearchBar = () => {
           ref={innerRef}
           placeholder="اختر كلمات مفتاحية، ولا تكثر..."
           variant={"filled"}
-          value={query}
-          onChange={handleChange}
           isRequired
         />
       </InputGroup>
