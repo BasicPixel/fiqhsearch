@@ -16,27 +16,15 @@ import {
   MenuGroup,
 } from "@chakra-ui/react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import {
-  FiGithub,
-  FiMoon,
-  FiSun,
-  FiMenu,
-  FiTwitter,
-  FiSettings,
-} from "react-icons/fi";
+import { FiGithub, FiMoon, FiSun, FiMenu, FiTwitter } from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 
 import MenuLink from "./MenuLink";
-import app from "../src/client";
-import { Auth } from "@supabase/ui";
-import moduleName from "@supabase/supabase-js";
 import { MADHHABS } from "../src/constants";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [madhhab, setMadhhab] = useLocalStorage("madhhab", null);
-  // const [user] = useAuthState(getAuth(app));
-  const { user } = Auth.useUser();
 
   return (
     <>
@@ -58,7 +46,6 @@ export default function Navbar() {
               <MenuOptionGroup
                 type="radio"
                 title="المذهب الفقهي"
-                // defaultValue={madhhab}
                 value={madhhab ? madhhab : ""}
                 onChange={(option) => {
                   setMadhhab(option);
@@ -86,16 +73,6 @@ export default function Navbar() {
                   <FiTwitter /> <Text ps={2}>حساب المشروع على تويتر</Text>
                 </MenuLink>
               </MenuGroup>
-              {user ? (
-                <>
-                  <MenuDivider />
-                  <MenuLink href={"/admin"} onClick={toggleColorMode}>
-                    <FiSettings /> <Text ps={2}>واجهة المسؤولين</Text>
-                  </MenuLink>
-                </>
-              ) : (
-                <>Not logged in</>
-              )}
             </MenuList>
           </Menu>
           <Link
