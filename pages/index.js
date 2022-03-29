@@ -1,16 +1,7 @@
-import {
-  Button,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import SearchBar from "../components/SearchBar";
+import { Heading, Stack, Text } from "@chakra-ui/react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
-import { FiSearch, FiBookOpen } from "react-icons/fi";
+import SearchForm from "../components/SearchForm";
 
 export default function Home() {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");
@@ -27,22 +18,7 @@ export default function Home() {
         <Text fontSize={"lg"}>
           خدمة تسهل الوصول إلى المسائل الفقهية حسب المذهب
         </Text>
-        <form action={`/search`}>
-          <SimpleGrid gap={2} columns={2} width="full">
-            <GridItem colSpan={2}>
-              <SearchBar />
-            </GridItem>
-            <Button rightIcon={<FiSearch />} colorScheme="teal" type="submit">
-              البحث
-            </Button>
-            <Link href={`/browse/${madhhab}`} passHref>
-              <Button colorScheme="blue" rightIcon={<FiBookOpen />}>
-                تصفح جميع المسائل
-              </Button>
-            </Link>
-          </SimpleGrid>
-          <input type="hidden" name="madhhab" value={madhhab} />
-        </form>
+        <SearchForm madhhab={madhhab} />
       </Stack>
     </>
   );
