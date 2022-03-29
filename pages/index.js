@@ -41,6 +41,7 @@ export default function Home() {
               </Button>
             </Link>
           </SimpleGrid>
+          <input type="hidden" name="madhhab" value={madhhab} />
         </form>
       </Stack>
     </>
