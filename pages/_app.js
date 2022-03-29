@@ -6,6 +6,8 @@ import "@fontsource/tajawal";
 import { RtlProvider } from "../components/rtl-provider";
 import Navbar from "../components/Navbar";
 
+import "../styles/globals.css";
+
 const theme = extendTheme({
   fonts: {
     heading: "Tajawal, sans-serif",
