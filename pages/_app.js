@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps }) {
             href="/favicon-16x16.png"
           />
           <link rel="manifest" href="/site.webmanifest"></link>
+          <title>الباحث الفقهي</title>
         </Head>
         <Navbar />
         <Container pt={4}>
