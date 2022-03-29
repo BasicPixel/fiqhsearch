@@ -39,6 +39,10 @@ function MyApp({ Component, pageProps }) {
           />
           <link rel="manifest" href="/site.webmanifest"></link>
           <title>الباحث الفقهي</title>
+          <meta
+            name="description"
+            content="خدمة تسهل الوصول إلى المسائل الفقهية على المذاهب الأربعة"
+          />
         </Head>
         <Navbar />
         <Container pt={4}>

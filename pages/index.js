@@ -16,7 +16,7 @@ export default function Home() {
       >
         <Heading>الباحث الفقهي</Heading>
         <Text fontSize={"lg"}>
-          خدمة تسهل الوصول إلى المسائل الفقهية حسب المذهب
+          خدمة تسهل الوصول إلى المسائل الفقهية على المذاهب الأربعة
         </Text>
         <SearchForm madhhab={madhhab} />
       </Stack>
