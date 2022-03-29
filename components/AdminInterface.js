@@ -24,6 +24,14 @@ const AdminInterface = () => {
         <Heading>واجهة المسؤولين</Heading>
         <Flex flexDirection={{ base: "column", md: "row" }} gap={2}>
           <Text fontSize={"lg"}></Text>
+        </Flex>
+        <Divider />
+        <SimpleGrid columns={2} columnGap={4}>
+          <Link href={`/admin/add`} passHref>
+            <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
+              إضافة مسألة جديدة
+            </Button>
+          </Link>
           <Button
             leftIcon={<FiLogOut />}
             onClick={() => {
@@ -33,17 +41,6 @@ const AdminInterface = () => {
             colorScheme="red"
           >
             تسجيل الخروج
-          </Button>
-        </Flex>
-        <Divider />
-        <SimpleGrid columns={2} columnGap={4}>
-          <Link href={`/admin/add`} passHref>
-            <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
-              إضافة مسألة جديدة
-            </Button>
-          </Link>
-          <Button leftIcon={<FiEdit />} colorScheme={"green"}>
-            تعديل مسألة
           </Button>
         </SimpleGrid>
       </Stack>
