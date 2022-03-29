@@ -7,7 +7,6 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  CloseButton,
   Divider,
   FormControl,
   FormLabel,
@@ -54,11 +53,6 @@ const Add = ({ topics }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(topic);
-    console.log(question);
-    console.log(answer);
-    console.log(proof);
 
     submitIssue();
   };
