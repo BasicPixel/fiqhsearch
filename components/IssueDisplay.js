@@ -1,5 +1,6 @@
-import Issue from "./Issue";
 import { Accordion } from "@chakra-ui/react";
+
+import Issue from "components/Issue";
 
 const IssueDisplay = ({ issues }) => {
   return (

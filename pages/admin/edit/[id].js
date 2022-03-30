@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Alert,
   AlertDescription,
@@ -12,9 +14,9 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import supabase from "../../../src/client";
-import { useState } from "react";
 import { Auth } from "@supabase/ui";
+
+import supabase from "src/client";
 
 const IssueEditor = ({ issue }) => {
   const [question, setQuestion] = useState(issue.question);

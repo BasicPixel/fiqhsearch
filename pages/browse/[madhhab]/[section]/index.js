@@ -1,14 +1,12 @@
 import React from "react";
-
-import { Container, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
-
 import NextLink from "next/link";
-import supabase from "../../../../src/client";
-
 import { useRouter } from "next/router";
 
+import { Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 import { FiCornerDownLeft } from "react-icons/fi";
-import Card from "../../../../components/Card";
+
+import supabase from "src/client";
+import Card from "components/Card";
 
 const Topic = ({ data, name }) => {
   const router = useRouter();
@@ -41,7 +39,7 @@ const Topic = ({ data, name }) => {
 export default Topic;
 
 export async function getServerSideProps(context) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("topics")
     .select()
     .eq("section", context.query.section);

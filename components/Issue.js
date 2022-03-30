@@ -1,5 +1,4 @@
 import {
-  Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
@@ -9,7 +8,6 @@ import {
   Text,
   Stack,
 } from "@chakra-ui/react";
-
 import { FiHelpCircle, FiCheckCircle, FiBook } from "react-icons/fi";
 
 const Issue = ({ issue }) => {

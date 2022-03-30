@@ -1,5 +1,6 @@
-import { Code, Heading, Stack, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+
+import { Code, Heading, Stack, Text } from "@chakra-ui/react";
 
 export default function Custom404() {
   const router = useRouter();

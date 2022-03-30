@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import {
   Alert,
@@ -18,9 +18,9 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import supabase from "../../../src/client";
 
-import { MADHHABS } from "../../../src/constants";
+import supabase from "src/client";
+import { MADHHABS } from "src/constants";
 
 const Add = ({ topics }) => {
   const router = useRouter();

@@ -2,9 +2,9 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import { Container, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
-import supabase from "../../../src/client";
 
-import Card from "../../../components/Card";
+import supabase from "src/client";
+import Card from "components/Card";
 
 const Browse = ({ data }) => {
   const router = useRouter();
@@ -34,7 +34,7 @@ const Browse = ({ data }) => {
 export default Browse;
 
 export async function getServerSideProps(context) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("sections")
     .select()
     .eq("madhhab", context.query.madhhab);

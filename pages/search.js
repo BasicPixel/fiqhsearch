@@ -1,9 +1,10 @@
-import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import IssueDisplay from "../components/IssueDisplay";
 
-import supabase from "../src/client";
-import { ISSUE_FIELDS, MADHHABS } from "../src/constants";
+import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
+
+import IssueDisplay from "components/IssueDisplay";
+import supabase from "src/client";
+import { ISSUE_FIELDS, MADHHABS } from "src/constants";
 
 const Search = ({ results }) => {
   const router = useRouter();

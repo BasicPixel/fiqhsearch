@@ -1,12 +1,11 @@
 import Head from "next/head";
 
-import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import "@fontsource/tajawal";
+import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 
-import { RtlProvider } from "../components/rtl-provider";
-import Navbar from "../components/Navbar";
-
-import "../styles/globals.css";
+import { RtlProvider } from "components/rtl-provider";
+import Navbar from "components/Navbar";
+import "styles/globals.css";
 
 const theme = extendTheme({
   fonts: {

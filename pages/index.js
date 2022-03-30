@@ -1,7 +1,7 @@
 import { Heading, Stack, Text } from "@chakra-ui/react";
-import useLocalStorage from "../hooks/useLocalStorage";
 
-import SearchForm from "../components/SearchForm";
+import useLocalStorage from "hooks/useLocalStorage";
+import SearchForm from "components/SearchForm";
 
 export default function Home() {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");

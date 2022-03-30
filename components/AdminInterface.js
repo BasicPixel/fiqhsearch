@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 import {
   Button,
   Divider,
@@ -7,11 +10,9 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
-import { FiEdit, FiLogOut, FiPlus } from "react-icons/fi";
-import supabase from "../src/client";
+import { FiLogOut, FiPlus } from "react-icons/fi";
+
+import supabase from "src/client";
 
 const AdminInterface = () => {
   const router = useRouter();

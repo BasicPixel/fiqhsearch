@@ -1,3 +1,5 @@
+import { useRef, useEffect } from "react";
+
 import {
   FormControl,
   Input,
@@ -5,7 +7,6 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
-import { useRef, useEffect } from "react";
 
 const SearchBar = () => {
   const innerRef = useRef();

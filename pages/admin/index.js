@@ -1,8 +1,8 @@
 import React from "react";
-import AdminInterface from "../../components/AdminInterface";
-import supabase from "../../src/client";
 import { useRouter } from "next/router";
-import { Heading } from "@chakra-ui/react";
+
+import AdminInterface from "components/AdminInterface";
+import supabase from "src/client";
 
 const Admin = () => {
   const user = supabase.auth.user();

@@ -1,5 +1,6 @@
-import { MenuItem } from "@chakra-ui/react";
 import Link from "next/link";
+
+import { MenuItem } from "@chakra-ui/react";
 
 const MenuLink = ({ href, children, target }) => (
   <Link

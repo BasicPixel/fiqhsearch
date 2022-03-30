@@ -2,10 +2,9 @@ import React from "react";
 
 import { Heading, Stack, Text } from "@chakra-ui/react";
 
-import supabase from "../../../../src/client";
-import IssueDisplay from "../../../../components/IssueDisplay";
-
-import { MADHHABS } from "../../../../src/constants";
+import supabase from "src/client";
+import IssueDisplay from "components/IssueDisplay";
+import { MADHHABS } from "src/constants";
 
 const Topic = ({ issues, topicData }) => {
   return (

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   SimpleGrid,
   GridItem,
@@ -6,10 +8,9 @@ import {
   RadioGroup,
   Stack,
 } from "@chakra-ui/react";
-import SearchBar from "./SearchBar";
-
 import { FiSearch, FiBookOpen } from "react-icons/fi";
-import Link from "next/link";
+
+import SearchBar from "components/SearchBar";
 
 const SearchForm = ({ madhhab }) => {
   return (

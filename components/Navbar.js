@@ -15,12 +15,12 @@ import {
   MenuItemOption,
   MenuGroup,
 } from "@chakra-ui/react";
-import useLocalStorage from "../hooks/useLocalStorage";
 import { FiGithub, FiMoon, FiSun, FiMenu, FiTwitter } from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 
-import MenuLink from "./MenuLink";
-import { MADHHABS } from "../src/constants";
+import useLocalStorage from "hooks/useLocalStorage";
+import MenuLink from "components/MenuLink";
+import { MADHHABS } from "src/constants";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();

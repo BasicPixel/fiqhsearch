@@ -1,7 +1,9 @@
-import { Auth } from "@supabase/ui";
 import React from "react";
-import supabase from "../../src/client";
 import { useRouter } from "next/router";
+
+import { Auth } from "@supabase/ui";
+
+import supabase from "src/client";
 
 const LoginPage = () => {
   const [user, setUser] = React.useState(null);

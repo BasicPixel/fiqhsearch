@@ -1,7 +1,9 @@
-import { Auth } from "@supabase/ui";
-import { useRouter } from "next/router";
-import useLocalStorage from "../../../hooks/useLocalStorage";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
+import { Auth } from "@supabase/ui";
+
+import useLocalStorage from "hooks/useLocalStorage";
 
 const AddIssue = () => {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");
