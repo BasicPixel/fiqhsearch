@@ -37,7 +37,11 @@ export default function Navbar() {
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Menu>
-            <MenuButton as={IconButton} icon={<FiMenu />} />
+            <MenuButton
+              as={IconButton}
+              icon={<FiMenu />}
+              aria-label="Menu button"
+            />
             <MenuList>
               <MenuItem>المذهب الحالي: {MADHHABS[madhhab]}</MenuItem>
 
