@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import IssueDisplay from "../components/IssueDisplay";
 
 import supabase from "../src/client";
-import { MADHHABS } from "../src/constants";
+import { ISSUE_FIELDS, MADHHABS } from "../src/constants";
 
 const Search = ({ results }) => {
   const router = useRouter();
@@ -11,8 +11,10 @@ const Search = ({ results }) => {
   return (
     <Stack spacing={4}>
       <Heading>نتائج البحث</Heading>
+      {/* Display data about provided query */}
       <Text>
-        بحثتَ عن: &quot;<b>{router.query.q}</b>&quot; في المذهب{" "}
+        بحثتَ عن: &quot;<b>{router.query.q}</b>&quot; في{" "}
+        <b>{ISSUE_FIELDS[router.query.searchIn]}</b> من المذهب{" "}
         <b>{MADHHABS[router.query.madhhab]}</b>
       </Text>
       {results.length > 1 ? (
@@ -35,7 +37,7 @@ export async function getServerSideProps(context) {
     .from("issues")
     .select()
     .eq("madhhab", context.query.madhhab)
-    .textSearch("question", `'${context.query.q}'`);
+    .textSearch(context.query.searchIn, `'${context.query.q}'`);
 
   return {
     props: { results },

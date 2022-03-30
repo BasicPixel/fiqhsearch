@@ -29,6 +29,14 @@ const SearchForm = ({ madhhab }) => {
       </SimpleGrid>
 
       <input type="hidden" name="madhhab" value={madhhab} />
+
+      <RadioGroup name="searchIn" defaultValue={"question"} mt={2}>
+        <Stack direction="row" spacing={4}>
+          <Radio value="question">الأسئلة</Radio>
+          <Radio value="answer">الأجوبة</Radio>
+          <Radio value="proof">الأدلة</Radio>
+        </Stack>
+      </RadioGroup>
     </form>
   );
 };

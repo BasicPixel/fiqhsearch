@@ -5,4 +5,8 @@ export const MADHHABS = {
   maliki: "المالكي",
 };
 
-export const fetchOptions = {};
+export const ISSUE_FIELDS = {
+  question: "الأسئلة",
+  answer: "الأجوبة",
+  proof: "الأدلة",
+};
