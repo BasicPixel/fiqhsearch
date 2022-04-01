@@ -25,11 +25,13 @@ const SearchForm = () => {
         <Button rightIcon={<FiSearch />} colorScheme="teal" type="submit">
           البحث
         </Button>
-        <Link href={`/browse/${madhhab}`} passHref>
-          <Button colorScheme="blue" rightIcon={<FiBookOpen />}>
-            تصفح جميع المسائل
-          </Button>
-        </Link>
+        {madhhab && (
+          <Link href={`/browse/${madhhab}`} passHref>
+            <Button colorScheme="blue" rightIcon={<FiBookOpen />}>
+              تصفح جميع المسائل
+            </Button>
+          </Link>
+        )}
       </SimpleGrid>
 
       <input type="hidden" name="madhhab" value={madhhab} />
