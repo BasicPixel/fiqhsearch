@@ -10,12 +10,15 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FiLogOut, FiPlus } from "react-icons/fi";
+import { FiLogOut, FiPlus, FiBook, FiFolderPlus } from "react-icons/fi";
 
 import supabase from "src/client";
+import LinkButton from "components/LinkButton";
+import useLocalStorage from "hooks/useLocalStorage";
 
 const AdminInterface = ({ user }) => {
   const router = useRouter();
+  const [madhhab] = useLocalStorage("madhhab");
 
   if (user)
     return (
@@ -23,14 +26,30 @@ const AdminInterface = ({ user }) => {
         <Heading>واجهة المسؤولين</Heading>
         <Text fontSize={"lg"}>المستخدم الحالي: {user.email}</Text>
         <Divider />
-        <SimpleGrid columns={2} columnGap={4}>
-          <Link href={`/admin/add`} passHref>
-            <Button leftIcon={<FiPlus />} colorScheme={"teal"}>
-              إضافة مسألة جديدة
-            </Button>
-          </Link>
+        <SimpleGrid columns={2} gap={2}>
+          <LinkButton
+            href={`/admin/add/issue/${madhhab}`}
+            icon={<FiPlus />}
+            colorScheme={"teal"}
+          >
+            إضافة مسألة
+          </LinkButton>
+          <LinkButton
+            href={`/admin/add/topic`}
+            icon={<FiBook />}
+            colorScheme={"green"}
+          >
+            إضافة قسم فقهي
+          </LinkButton>
+          <LinkButton
+            href={`/admin/add/section`}
+            icon={<FiFolderPlus />}
+            colorScheme={"purple"}
+          >
+            إضافة باب / فصل{" "}
+          </LinkButton>
           <Button
-            leftIcon={<FiLogOut />}
+            rightIcon={<FiLogOut />}
             onClick={() => {
               supabase.auth.signOut();
               router.push("/");
