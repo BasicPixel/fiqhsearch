@@ -12,6 +12,7 @@ import { FiSearch, FiBookOpen } from "react-icons/fi";
 
 import SearchBar from "components/SearchBar";
 import useLocalStorage from "hooks/useLocalStorage";
+import LinkButton from "./LinkButton";
 
 const SearchForm = () => {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");
@@ -25,11 +26,13 @@ const SearchForm = () => {
         <Button rightIcon={<FiSearch />} colorScheme="teal" type="submit">
           البحث
         </Button>
-        <Link href={`/browse/${madhhab ? madhhab : "hanbali"}`} passHref>
-          <Button colorScheme="blue" rightIcon={<FiBookOpen />}>
-            تصفح جميع المسائل
-          </Button>
-        </Link>
+        <LinkButton
+          colorScheme={"blue"}
+          href={`/browse/${madhhab ? madhhab : "hanbali"}`}
+          icon={<FiBookOpen />}
+        >
+          تصفح جميع المسائل
+        </LinkButton>
       </SimpleGrid>
 
       <input type="hidden" name="madhhab" value={madhhab} />
