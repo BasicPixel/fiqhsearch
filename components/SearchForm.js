@@ -25,7 +25,7 @@ const SearchForm = () => {
         <Button rightIcon={<FiSearch />} colorScheme="teal" type="submit">
           البحث
         </Button>
-        <Link href={"/browse/" + madhhab ? madhhab : ""} passHref>
+        <Link href={`/browse/${madhhab ? madhhab : ""}`} passHref>
           <Button colorScheme="blue" rightIcon={<FiBookOpen />}>
             تصفح جميع المسائل
           </Button>
