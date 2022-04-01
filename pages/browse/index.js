@@ -11,9 +11,7 @@ const BrowseHome = () => {
 
   useEffect(() => {
     () => {
-      let routerMadhhab = madhhab ? madhhab : "hanbali";
-
-      router.push(`browse/${routerMadhhab}`);
+      router.push(`browse/${madhhab}`);
     };
   }, []);
 
