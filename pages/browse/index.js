@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { Heading } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 import useLocalStorage from "hooks/useLocalStorage";
 
@@ -11,11 +11,13 @@ const BrowseHome = () => {
 
   useEffect(() => {
     () => {
-      router.push(`browse/${madhhab}`);
+      let routerMadhhab = madhhab ? madhhab : "hanbali";
+
+      router.push(`browse/${routerMadhhab}`);
     };
   }, []);
 
-  return <Heading textAlign={"center"}>جارٍ التحميل...</Heading>;
+  return <Spinner />;
 };
 
 export default BrowseHome;
