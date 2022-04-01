@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+import { Auth } from "@supabase/ui";
+
 import AdminInterface from "components/AdminInterface";
-import supabase from "src/client";
 
 const Admin = () => {
-  const user = supabase.auth.user();
+  const { user } = Auth.useUser();
   const router = useRouter();
 
   React.useEffect(() => {
