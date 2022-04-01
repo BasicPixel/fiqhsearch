@@ -13,7 +13,7 @@ const BrowseHome = () => {
     () => {
       router.push(`browse/${madhhab}`);
     };
-  }, []);
+  }, [madhhab, router]);
 
   return <Heading textAlign={"center"}>جارٍ التحميل...</Heading>;
 };
