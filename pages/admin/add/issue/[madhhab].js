@@ -22,7 +22,7 @@ import FormFeedback from "components/Form/FormFeedback";
 import CustomAlert from "components/Form/CustomAlert";
 import LinkButton from "components/LinkButton";
 
-const Add = ({ topics }) => {
+const AddIssue = ({ topics }) => {
   const router = useRouter();
   const madhhab = router.query.madhhab;
 
@@ -167,7 +167,7 @@ const Add = ({ topics }) => {
   );
 };
 
-export default Add;
+export default AddIssue;
 
 export async function getServerSideProps(context) {
   const { data } = await supabase

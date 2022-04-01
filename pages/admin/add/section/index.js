@@ -16,7 +16,7 @@ import FormBody from "components/Form/FormBody";
 import FormFeedback from "components/Form/FormFeedback";
 import CustomAlert from "components/Form/CustomAlert";
 
-const Add = () => {
+const AddSection = () => {
   const madhhabNames = Object.keys(MADHHABS);
 
   const submitSection = async () => {
@@ -118,4 +118,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default AddSection;
