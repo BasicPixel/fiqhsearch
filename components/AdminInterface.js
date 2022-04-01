@@ -14,18 +14,14 @@ import { FiLogOut, FiPlus } from "react-icons/fi";
 
 import supabase from "src/client";
 
-const AdminInterface = () => {
+const AdminInterface = ({ user }) => {
   const router = useRouter();
-
-  const user = supabase.auth.user();
 
   if (user)
     return (
       <Stack spacing={4}>
         <Heading>واجهة المسؤولين</Heading>
-        <Flex flexDirection={{ base: "column", md: "row" }} gap={2}>
-          <Text fontSize={"lg"}></Text>
-        </Flex>
+        <Text fontSize={"lg"}>المستخدم الحالي: {user.email}</Text>
         <Divider />
         <SimpleGrid columns={2} columnGap={4}>
           <Link href={`/admin/add`} passHref>
@@ -46,7 +42,7 @@ const AdminInterface = () => {
         </SimpleGrid>
       </Stack>
     );
-  else return <Heading textAlign={"center"}>You have to be logged in.</Heading>;
+  return <Heading textAlign={"center"}>You have to be logged in.</Heading>;
 };
 
 export default AdminInterface;

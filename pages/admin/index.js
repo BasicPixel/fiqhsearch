@@ -17,7 +17,7 @@ const Admin = () => {
     return () => console.log();
   }, [router, user]);
 
-  return <AdminInterface />;
+  return <AdminInterface user={user} />;
 };
 
 export default Admin;
