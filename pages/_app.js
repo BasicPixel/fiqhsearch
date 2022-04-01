@@ -2,10 +2,12 @@ import Head from "next/head";
 
 import "@fontsource/tajawal";
 import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
+import { Auth } from "@supabase/ui";
 
 import { RtlProvider } from "components/rtl-provider";
 import Navbar from "components/Navbar";
 import "styles/globals.css";
+import app from "src/client";
 
 const theme = extendTheme({
   fonts: {
@@ -43,10 +45,12 @@ function MyApp({ Component, pageProps }) {
             content="خدمة تسهل الوصول إلى المسائل الفقهية على المذاهب الأربعة"
           />
         </Head>
-        <Navbar />
-        <Container pt={4}>
-          <Component {...pageProps} />
-        </Container>
+        <Auth.UserContextProvider supabaseClient={app}>
+          <Navbar />
+          <Container pt={4}>
+            <Component {...pageProps} />
+          </Container>
+        </Auth.UserContextProvider>
       </RtlProvider>
     </ChakraProvider>
   );
