@@ -15,16 +15,25 @@ import {
   MenuItemOption,
   MenuGroup,
 } from "@chakra-ui/react";
-import { FiGithub, FiMoon, FiSun, FiMenu, FiTwitter } from "react-icons/fi";
+import {
+  FiGithub,
+  FiMoon,
+  FiSun,
+  FiMenu,
+  FiTwitter,
+  FiDatabase,
+} from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 
 import useLocalStorage from "hooks/useLocalStorage";
 import MenuLink from "components/MenuLink";
 import { MADHHABS } from "src/constants";
+import { Auth } from "@supabase/ui";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [madhhab, setMadhhab] = useLocalStorage("madhhab", null);
+  const { user } = Auth.useUser();
 
   return (
     <>
@@ -77,6 +86,15 @@ export default function Navbar() {
                   <FiTwitter /> <Text ps={2}>حساب المشروع على تويتر</Text>
                 </MenuLink>
               </MenuGroup>
+
+              {user && (
+                <>
+                  <MenuDivider />
+                  <MenuLink href={"/admin"}>
+                    <FiDatabase /> <Text ps={2}>واجهة المسؤولين</Text>
+                  </MenuLink>
+                </>
+              )}
             </MenuList>
           </Menu>
           <Link
