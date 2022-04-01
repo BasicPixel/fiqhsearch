@@ -11,8 +11,11 @@ import {
 import { FiSearch, FiBookOpen } from "react-icons/fi";
 
 import SearchBar from "components/SearchBar";
+import useLocalStorage from "hooks/useLocalStorage";
 
-const SearchForm = ({ madhhab }) => {
+const SearchForm = () => {
+  const [madhhab] = useLocalStorage("madhhab", "hanbali");
+
   return (
     <form action={`/search`}>
       <SimpleGrid gap={2} columns={2} width="full">

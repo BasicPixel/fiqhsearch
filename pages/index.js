@@ -1,11 +1,8 @@
 import { Heading, Stack, Text } from "@chakra-ui/react";
 
-import useLocalStorage from "hooks/useLocalStorage";
 import SearchForm from "components/SearchForm";
 
 export default function Home() {
-  const [madhhab] = useLocalStorage("madhhab", "hanbali");
-
   return (
     <>
       <Stack
@@ -18,7 +15,7 @@ export default function Home() {
         <Text fontSize={"lg"}>
           خدمة تسهل الوصول إلى المسائل الفقهية على المذاهب الأربعة
         </Text>
-        <SearchForm madhhab={madhhab} />
+        <SearchForm />
       </Stack>
     </>
   );
