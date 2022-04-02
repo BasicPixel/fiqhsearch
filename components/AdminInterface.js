@@ -1,21 +1,21 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 import {
   Button,
   Divider,
-  Flex,
   Heading,
   SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FiLogOut, FiPlus, FiBook, FiFolderPlus } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 
 import supabase from "src/client";
-import LinkButton from "components/LinkButton";
 import useLocalStorage from "hooks/useLocalStorage";
 import { MADHHABS } from "src/constants";
+import AddSectionBtn from "./AddSectionBtn";
+import AddTopicBtn from "./AddTopicButton";
+import AddIssueBtn from "./AddIssueBtn";
 
 const AdminInterface = ({ user }) => {
   const router = useRouter();
@@ -33,27 +33,9 @@ const AdminInterface = ({ user }) => {
         </Text>
         <Divider />
         <SimpleGrid columns={2} gap={2}>
-          <LinkButton
-            href={`/admin/add/issue/${madhhab}`}
-            icon={<FiPlus />}
-            colorScheme={"teal"}
-          >
-            إضافة مسألة
-          </LinkButton>
-          <LinkButton
-            href={`/admin/add/section`}
-            icon={<FiBook />}
-            colorScheme={"green"}
-          >
-            إضافة قسم فقهي
-          </LinkButton>
-          <LinkButton
-            href={`/admin/add/topic/${madhhab}`}
-            icon={<FiFolderPlus />}
-            colorScheme={"purple"}
-          >
-            إضافة باب / فصل{" "}
-          </LinkButton>
+          <AddIssueBtn madhhab={madhhab} />
+          <AddSectionBtn />
+          <AddTopicBtn madhhab={madhhab} />
           <Button
             rightIcon={<FiLogOut />}
             onClick={() => {
