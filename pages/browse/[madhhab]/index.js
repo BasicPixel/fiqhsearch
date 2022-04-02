@@ -2,17 +2,21 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import { Container, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
+import { Auth } from "@supabase/ui";
 
 import supabase from "src/client";
 import Card from "components/Card";
+import AddSectionBtn from "components/AddSectionBtn";
 
 const Browse = ({ data }) => {
   const router = useRouter();
+  const { user } = Auth.useUser();
 
   return (
     <Container maxW={"full"} py={"6"}>
       <Stack spacing={4}>
         <Heading>أقسام المسائل</Heading>
+        {user && <AddSectionBtn />}
         <Flex py={4} gap={4} flexWrap="wrap">
           {data.length === 0 ? (
             <Text fontSize={"lg"}>ما من أقسام هنا...</Text>

@@ -4,12 +4,15 @@ import { useRouter } from "next/router";
 
 import { Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 import { FiCornerDownLeft } from "react-icons/fi";
+import { Auth } from "@supabase/ui";
 
 import supabase from "src/client";
 import Card from "components/Card";
+import AddTopicBtn from "components/AddTopicButton";
 
 const Topic = ({ data, name }) => {
   const router = useRouter();
+  const { user } = Auth.useUser();
 
   return (
     <Stack spacing={4}>
@@ -19,6 +22,7 @@ const Topic = ({ data, name }) => {
         </Link>
       </NextLink>
       <Heading>{name}</Heading>
+      {user && <AddTopicBtn madhhab={router.query.madhhab} />}
       <Flex py={4} gap={4} flexWrap="wrap">
         {data.length === 0 ? (
           <Text fontSize={"lg"}>ما من أبواب هنا...</Text>
