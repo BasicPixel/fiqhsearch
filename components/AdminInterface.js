@@ -15,6 +15,7 @@ import { FiLogOut, FiPlus, FiBook, FiFolderPlus } from "react-icons/fi";
 import supabase from "src/client";
 import LinkButton from "components/LinkButton";
 import useLocalStorage from "hooks/useLocalStorage";
+import { MADHHABS } from "src/constants";
 
 const AdminInterface = ({ user }) => {
   const router = useRouter();
@@ -24,7 +25,12 @@ const AdminInterface = ({ user }) => {
     return (
       <Stack spacing={4}>
         <Heading>واجهة المسؤولين</Heading>
-        <Text fontSize={"lg"}>المستخدم الحالي: {user.email}</Text>
+        <Text fontSize={"lg"}>
+          المستخدم الحالي: <b>{user.email}</b>
+        </Text>
+        <Text>
+          المذهب الحالي: <b>{MADHHABS[madhhab]}</b>
+        </Text>
         <Divider />
         <SimpleGrid columns={2} gap={2}>
           <LinkButton
@@ -35,14 +41,14 @@ const AdminInterface = ({ user }) => {
             إضافة مسألة
           </LinkButton>
           <LinkButton
-            href={`/admin/add/topic`}
+            href={`/admin/add/section`}
             icon={<FiBook />}
             colorScheme={"green"}
           >
             إضافة قسم فقهي
           </LinkButton>
           <LinkButton
-            href={`/admin/add/section`}
+            href={`/admin/add/topic/${madhhab}`}
             icon={<FiFolderPlus />}
             colorScheme={"purple"}
           >
