@@ -8,9 +8,13 @@ import {
   Text,
   Stack,
 } from "@chakra-ui/react";
-import { FiHelpCircle, FiCheckCircle, FiBook } from "react-icons/fi";
+import { Auth } from "@supabase/ui";
+import { FiHelpCircle, FiCheckCircle, FiBook, FiEdit } from "react-icons/fi";
+import LinkButton from "./LinkButton";
 
 const Issue = ({ issue }) => {
+  const { user } = Auth.useUser();
+
   return (
     <AccordionItem key={issue.id}>
       <h2>
@@ -41,6 +45,11 @@ const Issue = ({ issue }) => {
             </Heading>
             <Text>{issue.proof}</Text>
           </Box>
+          {user && (
+            <LinkButton href={`/admin/edit/${issue.id}`} icon={<FiEdit />}>
+              تعديل المسألة
+            </LinkButton>
+          )}
         </Stack>
       </AccordionPanel>
     </AccordionItem>

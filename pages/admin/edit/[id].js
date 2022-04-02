@@ -1,27 +1,27 @@
 import { useState } from "react";
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Button,
   FormControl,
   FormLabel,
   Heading,
   Input,
-  Spinner,
-  Stack,
   Textarea,
 } from "@chakra-ui/react";
 import { Auth } from "@supabase/ui";
 
 import supabase from "src/client";
+import Form from "components/Form/Form";
+import FormHeader from "components/Form/FormHeader";
+import FormBody from "components/Form/FormBody";
+import FormFeedback from "components/Form/FormFeedback";
+import CustomAlert from "components/Form/CustomAlert";
+import DeleteIssueBtn from "components/DeleteIssueBtn";
 
 const IssueEditor = ({ issue }) => {
-  const [question, setQuestion] = useState(issue.question);
-  const [answer, setAnswer] = useState(issue.answer);
-  const [proof, setProof] = useState(issue.proof);
+  const [question, setQuestion] = useState(issue?.question);
+  const [answer, setAnswer] = useState(issue?.answer);
+  const [proof, setProof] = useState(issue?.proof);
 
   const [submitData, setSubmitData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ const IssueEditor = ({ issue }) => {
     const { data, error } = await supabase
       .from("issues")
       .update({ ...issue, question, answer, proof })
-      .eq("id", issue.id);
+      .eq("id", issue?.id);
 
     setLoading(false);
 
@@ -50,86 +50,84 @@ const IssueEditor = ({ issue }) => {
 
     if (
       !(
-        question === issue.question &&
-        answer === issue.answer &&
-        proof === issue.proof
+        question === issue?.question &&
+        answer === issue?.answer &&
+        proof === issue?.proof
       )
     ) {
       submitEdit();
-    } else {
-      console.log("nah man");
     }
   };
 
-  if (user)
-    return (
-      <Stack spacing={2}>
-        <Heading>تعديل مسألة</Heading>
-        <form onSubmit={handleSubmit}>
-          <Stack spacing={4}>
-            <FormControl>
-              <FormLabel htmlFor="question">السؤال</FormLabel>
-              <Input
-                id="question"
-                type={"text"}
-                placeholder="نص السؤال..."
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
+  if (user) {
+    if (issue) {
+      return (
+        <Form>
+          <FormHeader title={"تعديل المسألة"} />
+          <form onSubmit={handleSubmit}>
+            <FormBody>
+              <DeleteIssueBtn id={issue?.id} />
+              <FormControl>
+                <FormLabel htmlFor="question">السؤال</FormLabel>
+                <Input
+                  id="question"
+                  type={"text"}
+                  placeholder="نص السؤال..."
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="answer">الجواب</FormLabel>
+                <Textarea
+                  id="answer"
+                  type={"text"}
+                  placeholder="نص الجواب..."
+                  value={answer}
+                  onChange={(e) => setAnswer(e.target.value)}
+                  rows={5}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="proof">الدليل</FormLabel>
+                <Textarea
+                  id="proof"
+                  type={"text"}
+                  placeholder="دليل المسألة..."
+                  value={proof}
+                  onChange={(e) => setProof(e.target.value)}
+                  rows={5}
+                />
+              </FormControl>
+              <Button type="submit" colorScheme={"blue"}>
+                تأكيد التعديلات
+              </Button>
+            </FormBody>
+          </form>
+
+          <FormFeedback>
+            {loading && (
+              <CustomAlert status="warning" title="جارٍ تعديل المسألة..." />
+            )}
+
+            {error && (
+              <CustomAlert
+                status="error"
+                title="حدثت مشكلة خلال تعديل المسألة"
+                description={error}
               />
-            </FormControl>
+            )}
 
-            <FormControl>
-              <FormLabel htmlFor="answer">الجواب</FormLabel>
-              <Textarea
-                id="answer"
-                type={"text"}
-                placeholder="نص الجواب..."
-                value={answer}
-                onChange={(e) => setAnswer(e.target.value)}
-                rows={5}
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel htmlFor="proof">الدليل</FormLabel>
-              <Textarea
-                id="proof"
-                type={"text"}
-                placeholder="دليل المسألة..."
-                value={proof}
-                onChange={(e) => setProof(e.target.value)}
-                rows={5}
-              />
-            </FormControl>
-            <Button type="submit" colorScheme={"blue"}>
-              تأكيد التعديلات
-            </Button>
-          </Stack>
-        </form>
-
-        {loading && (
-          <Alert status="warning">
-            <Spinner />
-            <AlertTitle mr={2}>جار تعديل المسألة...</AlertTitle>
-          </Alert>
-        )}
-
-        {error && (
-          <Alert status="error">
-            <AlertIcon />
-            <AlertTitle mr={2}>حدثت مشكلة خلال تعديل المسألة</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        {!error && submitData && (
-          <Alert status="success">
-            <AlertIcon />
-            <AlertTitle mr={2}>تم تعديل المسألة بنجاح</AlertTitle>
-          </Alert>
-        )}
-      </Stack>
-    );
+            {!error && submitData && (
+              <CustomAlert status="success" title="تم تعديل المسألة" />
+            )}
+          </FormFeedback>
+        </Form>
+      );
+    } else {
+      return <Heading>لم نعثر على المسألة المطلوبة.</Heading>;
+    }
+  }
 
   return <Heading>You have to be logged in.</Heading>;
 };
