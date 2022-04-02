@@ -16,7 +16,7 @@ import FormHeader from "components/Form/FormHeader";
 import FormBody from "components/Form/FormBody";
 import FormFeedback from "components/Form/FormFeedback";
 import CustomAlert from "components/Form/CustomAlert";
-import DeleteIssueBtn from "components/DeleteIssueBtn";
+import DeleteIssueBtn from "components/Buttons/DeleteIssueBtn";
 
 const IssueEditor = ({ issue }) => {
   const [question, setQuestion] = useState(issue?.question);

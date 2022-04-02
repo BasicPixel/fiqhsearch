@@ -13,9 +13,9 @@ import { FiLogOut } from "react-icons/fi";
 import supabase from "src/client";
 import useLocalStorage from "hooks/useLocalStorage";
 import { MADHHABS } from "src/constants";
-import AddSectionBtn from "./AddSectionBtn";
-import AddTopicBtn from "./AddTopicButton";
-import AddIssueBtn from "./AddIssueBtn";
+import AddSectionBtn from "components/Buttons/AddSectionBtn";
+import AddTopicBtn from "components/Buttons/AddTopicButton";
+import AddIssueBtn from "components/Buttons/AddIssueBtn";
 
 const AdminInterface = ({ user }) => {
   const router = useRouter();

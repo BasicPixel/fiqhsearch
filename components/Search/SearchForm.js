@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   SimpleGrid,
   GridItem,
@@ -10,9 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { FiSearch, FiBookOpen } from "react-icons/fi";
 
-import SearchBar from "components/SearchBar";
+import SearchBar from "components/Search/SearchBar";
 import useLocalStorage from "hooks/useLocalStorage";
-import LinkButton from "./LinkButton";
+import LinkButton from "components/LinkButton";
 
 const SearchForm = () => {
   const [madhhab] = useLocalStorage("madhhab", "hanbali");

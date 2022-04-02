@@ -4,7 +4,7 @@ import { Auth } from "@supabase/ui";
 import supabase from "src/client";
 import IssueDisplay from "components/IssueDisplay";
 import { MADHHABS } from "src/constants";
-import AddIssueBtn from "components/AddIssueBtn";
+import AddIssueBtn from "components/Buttons/AddIssueBtn";
 import { useRouter } from "next/router";
 
 const Topic = ({ issues, topicData }) => {

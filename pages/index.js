@@ -1,6 +1,6 @@
 import { Heading, Stack, Text } from "@chakra-ui/react";
 
-import SearchForm from "components/SearchForm";
+import SearchForm from "components/Search/SearchForm";
 
 export default function Home() {
   return (

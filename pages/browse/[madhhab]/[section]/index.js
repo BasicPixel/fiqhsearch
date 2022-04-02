@@ -8,7 +8,7 @@ import { Auth } from "@supabase/ui";
 
 import supabase from "src/client";
 import Card from "components/Card";
-import AddTopicBtn from "components/AddTopicButton";
+import AddTopicBtn from "components/Buttons/AddTopicButton";
 
 const Topic = ({ data, name }) => {
   const router = useRouter();
