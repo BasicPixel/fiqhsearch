@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { Auth } from "@supabase/ui";
@@ -9,7 +9,7 @@ const Admin = () => {
   const { user } = Auth.useUser();
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!user) {
       router.push("/admin/login");
     }

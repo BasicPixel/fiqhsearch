@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 import {
@@ -18,10 +18,10 @@ import supabase from "src/client";
 
 const DeleteIssueBtn = ({ id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = React.useRef();
+  const cancelRef = useRef();
   const router = useRouter();
 
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
     setLoading(true);

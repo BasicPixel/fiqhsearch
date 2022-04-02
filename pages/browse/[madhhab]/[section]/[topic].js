@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { Heading, Skeleton, Stack, Text } from "@chakra-ui/react";
@@ -24,7 +24,7 @@ const Topic = () => {
     topic ? `topics?select=*&id=eq.${topic}` : ""
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!router.isReady) return;
 
     refetch();

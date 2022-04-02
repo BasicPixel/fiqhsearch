@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
 
@@ -27,7 +27,7 @@ const Topic = () => {
     section ? `sections?select=name&id=eq.${section}` : ""
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     // https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
 
     if (!router.isReady) return;
