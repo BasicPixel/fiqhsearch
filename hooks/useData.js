@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { supabaseAnonKey } from "src/client";
 
-const useData = (url) => {
+const useData = (query) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    if (query !== "") {
       setLoading(true);
+
       try {
         const response = await fetch(
-          `https://axbeytrzoapsldwtjqvx.supabase.co/rest/v1/${url}`,
+          `https://axbeytrzoapsldwtjqvx.supabase.co/rest/v1/${query}`,
           {
             headers: {
               apiKey: supabaseAnonKey,
@@ -26,12 +27,14 @@ const useData = (url) => {
       }
 
       setLoading(false);
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
-  return [data, loading, error];
+  return [data, loading, error, fetchData];
 };
 
 export default useData;
