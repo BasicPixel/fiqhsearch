@@ -4,4 +4,13 @@
 
 _This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)._
 
-## Getting Started
+[Repo](https://github.com/fiqhsearch/web)
+[Deployment Repo](https://github.com/BasicPixel/fiqhsearch)
+
+### Made using
+
+- React
+- [Next.js](https://nextjs.org)
+- [Chakra UI](https://chakra-ui.com)
+- [feathericons](https://feathericons.com)
+- [Vercel](https://vercel.com) (deployment)
